@@ -41,20 +41,20 @@
 
         render() {
           return (
-            <div>
+            <>
               <div>{this.state.first}곱하기 {this.state.second}는?</div>
               <form onSubmit={this.onSubmit}>
                 <input type="number" value={this.state.value} onChange={this.onChange} />
                 <button>입력!</button>
               </form>
               <div>{this.state.result}</div>
-            </div>
-          );
+            </>
+          ); // <></> 에러나면 <React.Fragment></React.Fragment> 사용
         }
       }
     </script>
     <script type="text/babel">
-      ReactDOM.render(<div><GuGuDan /><GuGuDan /><GuGuDan /></div>, document.querySelector('#root'));
+      ReactDOM.render(<><GuGuDan /><GuGuDan /><GuGuDan /></>, document.querySelector('#root'));
     </script>
   </body>
 </html>
