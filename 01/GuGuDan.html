@@ -58,6 +58,8 @@
               <div>{this.state.result}</div>
             </>
           ); // <></> 에러나면 <React.Fragment></React.Fragment> 사용
+          // 태그 안에 class와 for 사용할 수 없음(자바스크립트 class, for와 구별안됨)
+          // class -> className, for -> htmlFor 로 대체해야함
         }
       }
     </script>
