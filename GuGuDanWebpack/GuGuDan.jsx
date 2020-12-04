@@ -1,5 +1,5 @@
 const React = require('react');
-const [ useState, useRef ] = React;
+const { useState, useRef } = React;
 
 const GuGuDan = () => { // state가 바뀌면 이 함수 자체가 다시 생성됨. 클래스보다 느릴 수 있음
   const [first, setFirst] = useState(Math.ceil(Math.random() * 9));
