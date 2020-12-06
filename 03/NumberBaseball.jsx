@@ -25,13 +25,18 @@ class NumberBaseball extends Component {
       <>
         <h1>{this.state.result}</h1>
         <form onSubmit={this.onSubmit}>
-          <input maxLength={4} value={this.state.value} onChange={this.onChange} />
+          <input maxLength={4} value={this.state.value} onChange={this.onChange}></input>
         </form>
         <div>시도: {this.state.tries.length}</div>
         <ul>
-          {['like', 'like', 'like', 'like'].map((v) => {
+          {[
+            { fruit: '사과', taste: '맛있다'}, 
+            { fruit: '바나나', taste: '맛없다'}, 
+            { fruit: '포도', taste: '시다'}, 
+            { fruit: '귤', taste: '떫다'}
+          ].map((v, i) => {
             return (
-              <li>{v}</li>
+              <li key={v.fruit}><b>{v.fruit}</b> - {v.taste} - {i}</li>
             );
           })}
         </ul>
