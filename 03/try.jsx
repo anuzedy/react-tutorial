@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 class Try extends Component {
   render() {
+    const { v } = this.props;
     return (
       <li>
-        <div>{this.props.v.try}</div>
-        <div>{this.props.v.result}</div>
+        <div>{v.try}</div>
+        <div>{v.result}</div>
       </li>
     );
   }
