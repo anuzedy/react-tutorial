@@ -1,6 +1,6 @@
 import React  from 'react';
 import ReactDom  from 'react-dom';
 
-import NumberBaseball from './NumberBaseball';
+import RenderTest from './RenderTest';
 
-ReactDom.render(<NumberBaseball />, document.querySelector('#root'));
+ReactDom.render(<RenderTest />, document.querySelector('#root'));

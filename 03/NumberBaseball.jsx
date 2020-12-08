@@ -29,7 +29,7 @@ const NumberBaseball = () => {
     e.preventDefault();
     if(value === answer.join('')) {
       setResult('홈런!');
-      setTries((prevState) => [...prevState.tries, {try: value, result: '홈런!'}]);
+      setTries((prevTries) => [...prevTries, {try: value, result: '홈런!'}]);
 
       alert('게임을 다시 시작합니다!');
 
@@ -54,7 +54,8 @@ const NumberBaseball = () => {
             ball += 1;
           }
         }
-        setTries((prevState) => [...prevState.tries, {try: value, result: `${strike} 스트라이크, ${ball} 볼입니다.`}]);
+        setValue('');
+        setTries((prevTries) => [...prevTries, {try: value, result: `${strike} 스트라이크, ${ball} 볼입니다.`}]);
       }
     }
   };
