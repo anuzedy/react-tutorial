@@ -1,6 +1,20 @@
-import React, { Component } from 'react';
+import React, { PureComponent, memo } from 'react';
 
-const Try = ({ v }) => {
+// class Try extends PureComponent {
+//   render() {
+//     const { v } = this.props;
+//     return (
+//       <>
+//         <li>
+//           <div>{v.try}</div>
+//           <div>{v.result}</div>
+//         </li>
+//       </>
+//     );
+//   }
+// }
+
+const Try = memo(({ v }) => {
   return (
     <>
       <li>
@@ -9,6 +23,6 @@ const Try = ({ v }) => {
       </li>
     </>
   );
-}
+});
 
 export default Try;
