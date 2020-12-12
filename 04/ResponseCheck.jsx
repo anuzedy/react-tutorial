@@ -48,9 +48,21 @@ const ResponseCheck = () => {
       <div id="screen" className={state} onClick={onClickScreen}>
         {message}
       </div>
-      {renderAverage()}
+      {(() => {
+        if(result.length === 0) {
+          return null;
+        } else {
+          return <>
+            <div>평균 시간: {result.reduce((a, c) => a + c) / result.length}ms</div>
+            <button onClick={onReset}>리셋</button>
+          </>;
+        }
+      })()}
+      {/* {renderAverage()} */}
     </>
   );
+  // 즉시실행함수 안에서 if나 for를 사용할 수 있는데 코드가 지저분해지기 때문에 잘 안씀
+  // 자식 컴포넌트로 만드는 것이 가장좋음
 }
 
 // class ResponseCheck extends Component {
