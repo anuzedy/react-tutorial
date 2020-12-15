@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 
 const Ball = memo(({number}) => {
-  const {number} = this.props;
   let background;
   if(number <= 10) {
     background = 'red';
@@ -17,6 +16,6 @@ const Ball = memo(({number}) => {
   return (
     <div className="ball" style={{background}}>{number}</div>
   );
-})
+});
 
 export default Ball;
