@@ -1,4 +1,4 @@
-import React, { Component, useState, useRef, useEffect } from 'react';
+import React, { Component, useState, useRef, useEffect, memo } from 'react';
 
 // 클래스의 경우 -> constructor -> render -> ref => componentDidMount
 //              -> (setState/props 바뀔때) -> shouldComponentUpdate가 true면 -> render -> componentDidUpdate)
