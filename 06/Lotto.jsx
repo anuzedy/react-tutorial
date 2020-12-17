@@ -1,8 +1,8 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
+import React, { Component, useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import Ball from './Ball';
 
-function getMinNumbers() {
-  console.log('getMinNumbers');
+function getWinNumbers() {
+  console.log('getWinNumbers');
   const candidate = Array(45).fill().map((v, i) => i + 1);
   const shuffle = [];
   while(candidate.length > 0) {
@@ -14,27 +14,12 @@ function getMinNumbers() {
 }
 
 const Lotto = () => {
-  const [winNumbers, setWinNumbers] = useState(getMinNumbers());
+  const lottoNumbers = useMemo(() => getWinNumbers(), []);
+  const [winNumbers, setWinNumbers] = useState(lottoNumbers);
   const [winBalls, setWinBalls] = useState([]);
   const [bonus, setBonus] = useState(null);
   const [redo, setRedo] = useState(false);
   const timeouts = useRef([]);
-
-//   componentDidMount() {
-//     this.runTimeouts();
-//   }
-  
-//   componentDidUpdate(prevProps, prevState) {
-//     if(this.state.winBalls.length === 0) {
-//       this.runTimeouts();
-//     }
-//   }
-
-//   componentWillUnmount() {
-//     this.timeouts.forEach((v) => {
-//       clearTimeout(v);
-//     });
-//   }
 
   useEffect(() => {
     for(let i=0; i<winNumbers.length - 1; i++) {
@@ -66,13 +51,13 @@ const Lotto = () => {
     }, 7000);
   };
 
-  const onClickRedo = () => {
-    setWinNumbers(getMinNumbers());
+  const onClickRedo = useCallback(() => { // 자식 컴포넌트에 함수를 전달할때는 필수로 useCallback 사용
+    setWinNumbers(getWinNumbers());
     setWinBalls([]);
     setBonus(null);
     setRedo(false);
-    timeouts.current = [];
-  }
+    timeouts.current = [winNumbers];
+  }, []);
 
   return (
     <>
@@ -89,7 +74,7 @@ const Lotto = () => {
 
 // class Lotto extends Component {
 //   state = {
-//     winNumbers: getMinNumbers(),  // 당첨 숫자들
+//     winNumbers: getWinNumbers(),  // 당첨 숫자들
 //     winBalls: [],
 //     bonus: null,  // 보너스 공
 //     redo: false,
@@ -134,7 +119,7 @@ const Lotto = () => {
 
 //   onClickRedo = () => {
 //     this.setState({
-//       winNumbers: getMinNumbers(),  // 당첨 숫자들
+//       winNumbers: getWinNumbers(),  // 당첨 숫자들
 //       winBalls: [],
 //       bonus: null,  // 보너스 공
 //       redo: false,
