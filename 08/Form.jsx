@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useContext } from 'react';
-import TableContext, { START_GAME } from './MineSearch';
+import { TableContext, START_GAME } from './MineSearch';
 
 const Form = () => {
   const [row, setRow] = useState(10);
@@ -19,7 +19,7 @@ const Form = () => {
     setMine(e.target.value);
   }, []);
 
-  const onChangeBtn = useCallback((e) => {
+  const onClickButton = useCallback((e) => {
     dispatch({ type: START_GAME, row, cell, mine });
   }, [row, cell, mine]);
 
