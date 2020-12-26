@@ -6,20 +6,20 @@ import Lotto from '../06/Lotto';
 
 const Games = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div>
-        <Link to="/number-baseball">숫자야구</Link>
+        <Link to="/game/number-baseball">숫자야구</Link>
         &nbsp;
-        <Link to="/rock-scissors-paper">가위바위보</Link>
+        <Link to="/game/rock-scissors-paper">가위바위보</Link>
         &nbsp;
-        <Link to="/lotto-generator">로또생성기</Link>
+        <Link to="/game/lotto-generator">로또생성기</Link>
+        &nbsp;
+        <Link to="/game/index">게임 매쳐</Link>
       </div>
       <div>
-        <Route path="/number-baseball" component={NumberBaseball} />
-        <Route path="/rock-scissors-paper" component={RSP} />
-        <Route path="/lotto-generator" component={Lotto} />
+        <Route path="/game/:name" component={GameMatcher} />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 
