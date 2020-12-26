@@ -41,7 +41,10 @@
           }
         };
 
-        onChange = (e) => this.setState({ value: e.target.value });
+        onChange = (e) => {
+          console.log(this);
+          this.setState({ value: e.target.value });
+        }
 
         input;
 
@@ -64,7 +67,7 @@
       }
     </script>
     <script type="text/babel">
-      ReactDOM.render(<><GuGuDan /><GuGuDan /><GuGuDan /></>, document.querySelector('#root'));
+      ReactDOM.render(<GuGuDan />, document.querySelector('#root'));
     </script>
   </body>
 </html>

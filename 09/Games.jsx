@@ -6,7 +6,7 @@ import Lotto from '../06/Lotto';
 
 const Games = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div>
         <Link to="/number-baseball">숫자야구</Link>
         &nbsp;
@@ -19,7 +19,7 @@ const Games = () => {
         <Route path="/rock-scissors-paper" component={RSP} />
         <Route path="/lotto-generator" component={Lotto} />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
