@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, HashRouter, Link, Route } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Link, Route, Switch } from 'react-router-dom';
 import NumberBaseball from '../03/NumberBaseball';
 import RSP from '../05/RSP';
 import Lotto from '../06/Lotto';
@@ -17,7 +17,14 @@ const Games = () => {
         <Link to="/game/index">게임 매쳐</Link>
       </div>
       <div>
-        <Route path="/game/:name" component={GameMatcher} />
+        <Switch>
+        {/* <Route path="/game/:name" component={() => <GameMatcher props="123456" />} /> */}
+          <Route exact path="/" render={(props) => <GameMatcher {...props} />} />
+          <Route path="/game/number-baseball" render={(props) => <GameMatcher {...props} />} />
+          <Route path="/game/number-baseball" render={(props) => <GameMatcher {...props} />} />
+          <Route path="/game/number-baseball" render={(props) => <GameMatcher {...props} />} />
+          <Route path="/game/number-baseball" render={(props) => <GameMatcher {...props} />} />
+        </Switch>
       </div>
     </BrowserRouter>
   );
