@@ -10,7 +10,7 @@
   <div id="root"></div>
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     console.log(React);
     console.log(ReactDOM);
@@ -34,20 +34,45 @@
     //   document.querySelector('#root')
     // );
 
+    // ReactDOM.render(
+    //   React.createElement(
+    //     'div',
+    //     null,
+    //     React.createElement(
+    //       'div',
+    //       null,
+    //       React.createElement('h1', null, '주제'),
+    //       React.createElement('ul', null,
+    //         React.createElement('li', null, 'React'), 
+    //         React.createElement('li', null, 'Vue')
+    //       )
+    //     )
+    //   ),
+    //   document.querySelector('#root')
+    // );
+
+    const title = "주제";
     ReactDOM.render(
-      React.createElement(
-        'div',
-        null,
-        React.createElement(
-          'div',
-          null,
-          React.createElement('h1', null, '주제'),
-          React.createElement('ul', null,
-            React.createElement('li', null, 'React'), 
-            React.createElement('li', null, 'Vue')
-          )
-        )
-      ),
+      <>
+        <div>
+          <div>
+            <h1>{title}</h1>
+            <ul>
+              <li>React</li>
+              <li>Vue</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h1>주제</h1>
+            <ul>
+              <li>React</li>
+              <li>Vue</li>
+            </ul>
+          </div>
+        </div>
+      </>,
       document.querySelector('#root')
     );
   </script>
