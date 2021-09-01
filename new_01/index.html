@@ -15,60 +15,41 @@
     console.log(React);
     console.log(ReactDOM);
 
-    // function Component(props) {
+    // function Component() {
     //   return (
     //     <div>
-    //       <h1>{props.message} 이것은 함수로 만든 컴포넌트 입니다.</h1>
+    //       <button onClick={() => {
+    //         console.log("clicked");
+    //       }}>클릭</button>
     //     </div>
     //   )
     // }
 
-    // Component.defaultProps = {
-    //   message: '기본값3',
-    // };
-
     class Component extends React.Component {
-      // state = {
-      //   count: 0,
-      // };
-      constructor(props) {
-        super(props);
-
-        this.state = { count: 0 };
+      state = {
+        count: 0,
       }
 
       render() {
         return (
           <div>
-            <h1>{this.props.message} 이것은 함수로 만든 컴포넌트 입니다.</h1>
             <p>{this.state.count}</p>
+            <button onClick={this.click}>클릭</button>
           </div>
-        );
+        )
       }
 
-      componentDidMount() {
-        setTimeout(() => {
-          // this.setState({
-          //   count: this.state.count + 1,
-          // });
-          this.setState((previousState) => {
-            const newState = { count: previousState.count + 1 };
-            return newState;
-          });
-        }, 1000);
+      click = () => {
+        console.log("clicked");
+        this.setState((previousState) => ({
+          ...previousState, 
+          count: previousState.count + 1,
+        }));
       }
-
-      static defaultProps = {
-        message: "기본값2",
-      };
     }
 
-    // Component.defaultProps = {
-    //   message: '기본값',
-    // };
-
     ReactDOM.render(
-      <Component message="기본값 아님" />,
+      <Component />,
       document.querySelector('#root')
     );
   </script>
