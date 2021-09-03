@@ -15,43 +15,56 @@
     console.log(React);
     console.log(ReactDOM);
 
-    // function Component() {
-    //   return (
-    //     <div>
-    //       <button onClick={() => {
-    //         console.log("clicked");
-    //       }}>클릭</button>
-    //     </div>
-    //   )
-    // }
-
-    class Component extends React.Component {
+    class App extends React.Component {
       state = {
-        count: 0,
+        age: 39,
+      };
+      interval = null;
+      constructor(props) {
+        super(props);
+        console.log('constructor', props);
       }
-
       render() {
+        console.log('render');
         return (
           <div>
-            <p>{this.state.count}</p>
-            <button onClick={this.click}>클릭</button>
+            <h2>Hello {this.props.name} - {this.state.age}</h2>
           </div>
-        )
+        );
       }
+      componentWillMount() {
+        console.log('componentWillMount');
+      }
+      componentDidMount() {
+        console.log('componentDidMount');
 
-      click = () => {
-        console.log("clicked");
-        this.setState((previousState) => ({
-          ...previousState, 
-          count: previousState.count + 1,
-        }));
+        this.interval = setInterval(() => {
+          // console.log('setInterval');
+          this.setState((prevState) => ({
+            ...prevState,
+            age: prevState.age + 1,
+          }));
+        }, 1000);
+      }
+      componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps', nextProps);
+      }
+      shouldComponentUpdate(nextProps, nextState) {
+        console.log('shouldComponentUpdate', nextProps, nextState);
+        return true;
+      }
+      componentWillUpdate(nextProps, nextState) {
+        console.log('componentWillUpdate', nextProps, nextState);
+      }
+      componentDidUpdate(prevProps, prevState) {
+        console.log('componentDidUpdate', prevProps, prevState);
+      }
+      componentWillUnmount() {
+        clearInterval(this.interval);
       }
     }
 
-    ReactDOM.render(
-      <Component />,
-      document.querySelector('#root')
-    );
+    ReactDOM.render(<App name="Mark" />, document.querySelector('#root'))
   </script>
 </body>
 </html>
